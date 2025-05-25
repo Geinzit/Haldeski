@@ -1,0 +1,111 @@
+[gd_scene load_steps=9 format=3 uid="uid://d4llgeis4efsr"]
+
+[ext_resource type="Script" path="res://Scripts/PC/pc.gd" id="1_5w5rh"]
+[ext_resource type="Texture2D" uid="uid://cjffhyeo7bmy8" path="res://assets/prototype/Dungeon Crawl Tiles/player/base/human_m.png" id="2_f2mu0"]
+[ext_resource type="Texture2D" uid="uid://btyy3wyi5ubkx" path="res://assets/prototype/Dungeon Crawl Tiles/player/hair/long_black.png" id="3_6fqqt"]
+[ext_resource type="PackedScene" uid="uid://bx75ctvtq22t5" path="res://Scenes/Armor/Armor.tscn" id="4_ek58y"]
+[ext_resource type="Texture2D" uid="uid://5kht1jf8t8ry" path="res://assets/prototype/Dungeon Crawl Tiles/UNUSED/gui/tab_unselected_square.png" id="5_5qf31"]
+[ext_resource type="PackedScene" uid="uid://tfsmno1jupqp" path="res://Scenes/Weapon/Weapon.tscn" id="9_g2rlk"]
+[ext_resource type="Texture2D" uid="uid://ce0rm5v2nsjxq" path="res://assets/prototype/Dungeon Crawl Tiles/gui/tab_unselected.png" id="10_lik3r"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_svqq5"]
+
+[node name="PC" type="Node2D"]
+script = ExtResource("1_5w5rh")
+metadata/_edit_vertical_guides_ = [-418.0]
+
+[node name="BodyBase" type="Sprite2D" parent="."]
+scale = Vector2(1.073, 1)
+texture = ExtResource("2_f2mu0")
+
+[node name="Hair" type="Sprite2D" parent="BodyBase"]
+texture = ExtResource("3_6fqqt")
+
+[node name="Equipment" type="Sprite2D" parent="."]
+
+[node name="Armor" type="Node2D" parent="Equipment"]
+
+[node name="Leg" parent="Equipment/Armor" instance=ExtResource("4_ek58y")]
+
+[node name="LegSlot" type="Sprite2D" parent="Equipment/Armor/Leg"]
+position = Vector2(5, 20)
+texture = ExtResource("5_5qf31")
+offset = Vector2(-5, 10)
+
+[node name="LegIcon" type="Sprite2D" parent="Equipment/Armor/Leg/LegSlot"]
+position = Vector2(-3.52, 10)
+scale = Vector2(0.5, 0.5)
+
+[node name="Foot" parent="Equipment/Armor" instance=ExtResource("4_ek58y")]
+
+[node name="FootSlot" type="Sprite2D" parent="Equipment/Armor/Foot"]
+position = Vector2(5, 45)
+texture = ExtResource("5_5qf31")
+offset = Vector2(-5, 10)
+
+[node name="FootIcon" type="Sprite2D" parent="Equipment/Armor/Foot/FootSlot"]
+position = Vector2(-3.52, 10)
+scale = Vector2(0.5, 0.5)
+
+[node name="Torso" parent="Equipment/Armor" instance=ExtResource("4_ek58y")]
+
+[node name="TorsoSlot" type="Sprite2D" parent="Equipment/Armor/Torso"]
+position = Vector2(5, -60)
+texture = ExtResource("5_5qf31")
+offset = Vector2(-5, 10)
+
+[node name="TorsoIcon" type="Sprite2D" parent="Equipment/Armor/Torso/TorsoSlot"]
+position = Vector2(-3.52, 10)
+scale = Vector2(0.5, 0.5)
+
+[node name="Arm" parent="Equipment/Armor" instance=ExtResource("4_ek58y")]
+
+[node name="ArmSlot" type="Sprite2D" parent="Equipment/Armor/Arm"]
+position = Vector2(5, -35)
+texture = ExtResource("5_5qf31")
+offset = Vector2(-5, 10)
+
+[node name="ArmIcon" type="Sprite2D" parent="Equipment/Armor/Arm/ArmSlot"]
+position = Vector2(-3.52, 10)
+scale = Vector2(0.5, 0.5)
+
+[node name="Head" parent="Equipment/Armor" instance=ExtResource("4_ek58y")]
+
+[node name="HeadSlot" type="Sprite2D" parent="Equipment/Armor/Head"]
+position = Vector2(5, -85)
+texture = ExtResource("5_5qf31")
+offset = Vector2(-5, 10)
+
+[node name="HeadIcon" type="Sprite2D" parent="Equipment/Armor/Head/HeadSlot"]
+position = Vector2(-3.52, 10)
+scale = Vector2(0.5, 0.5)
+
+[node name="Weapon" type="Node2D" parent="Equipment"]
+
+[node name="WeaponR" parent="Equipment/Weapon" instance=ExtResource("9_g2rlk")]
+
+[node name="WeaponRSlot" type="Sprite2D" parent="Equipment/Weapon/WeaponR"]
+position = Vector2(-24, -10)
+texture = ExtResource("10_lik3r")
+offset = Vector2(-5, 10)
+
+[node name="WeaponRIcon" type="Sprite2D" parent="Equipment/Weapon/WeaponR/WeaponRSlot"]
+position = Vector2(-3.52, 10)
+scale = Vector2(0.5, 0.5)
+
+[node name="WeaponL" parent="Equipment/Weapon" instance=ExtResource("9_g2rlk")]
+
+[node name="WeaponLSlot" type="Sprite2D" parent="Equipment/Weapon/WeaponL"]
+position = Vector2(29, 0)
+rotation = 3.14159
+texture = ExtResource("10_lik3r")
+
+[node name="WeaponLIcon" type="Sprite2D" parent="Equipment/Weapon/WeaponL/WeaponLSlot"]
+position = Vector2(0.7, 0)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_svqq5")

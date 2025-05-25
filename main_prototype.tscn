@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://sxjqrkxh1kpc"]
+
+[ext_resource type="PackedScene" uid="uid://cbgki4h3wyhlx" path="res://Scenes/Maps/map.tscn" id="1_l13mm"]
+[ext_resource type="PackedScene" uid="uid://d4llgeis4efsr" path="res://Scenes/PC/PC.tscn" id="2_bjpip"]
+[ext_resource type="PackedScene" uid="uid://l6ctn3twyh6a" path="res://Scenes/UI/InventoryUI.tscn" id="3_pbrkn"]
+[ext_resource type="Script" path="res://Scripts/UI/Camera.gd" id="3_xbqji"]
+
+[node name="mainPrototype" type="Node"]
+
+[node name="Map" parent="." instance=ExtResource("1_l13mm")]
+
+[node name="PC" parent="." instance=ExtResource("2_bjpip")]
+position = Vector2(16, 16)
+
+[node name="Camera" type="Camera2D" parent="."]
+anchor_mode = 0
+script = ExtResource("3_xbqji")
+
+[node name="InventoryUI" parent="Camera" instance=ExtResource("3_pbrkn")]

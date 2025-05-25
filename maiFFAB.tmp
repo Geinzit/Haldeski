@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://sxjqrkxh1kpc"]
+
+[ext_resource type="PackedScene" uid="uid://cbgki4h3wyhlx" path="res://Scenes/Maps/map.tscn" id="1_l13mm"]
+[ext_resource type="PackedScene" uid="uid://d4llgeis4efsr" path="res://Scenes/PC/PC.tscn" id="2_bjpip"]
+
+[node name="mainPrototype" type="Node"]
+
+[node name="Map" parent="." instance=ExtResource("1_l13mm")]
+position = Vector2(320, 320)
+
+[node name="PC" parent="." instance=ExtResource("2_bjpip")]
+position = Vector2(18, 16)

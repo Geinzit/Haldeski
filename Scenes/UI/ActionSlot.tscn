@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceubdt1r23lyi"]
+
+[sub_resource type="GDScript" id="GDScript_23w45"]
+script/source = "extends Button
+
+var action: WeaponAction
+@onready var unselected_icon = preload(\"res://assets/prototype/Dungeon Crawl Tiles/UNUSED/gui/tab_unselected_square.png\")
+@onready var selected_icon = preload(\"res://assets/prototype/Dungeon Crawl Tiles/UNUSED/gui/tab_selected_square.png\")
+
+var is_highlighted: bool
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	focus_mode = FocusMode.FOCUS_ALL
+	icon = unselected_icon
+	#connect(\"focus_entered\", Callable(focusChangedCallback))
+	#connect(\"focus_exited\", Callable(focusChangedCallback))
+	#update_visuals()
+
+#func focusChangedCallback():
+#	is_highlighted = !is_highlighted
+#	update_visuals()
+
+func update_visuals():
+	is_highlighted = !is_highlighted
+	if is_highlighted:
+		icon = selected_icon
+		grab_focus()
+	else:
+		icon = unselected_icon	
+
+func set_action(new_action: WeaponAction):
+	item = new_action
+	get_node(\"ActionIcon\").texture = WeaponAction.icon
+
+func _input(event: InputEvent) -> void:
+	if !has_focus():
+		return
+	if event.is_action_pressed(\"inputAction1\"):
+		# slot to action1
+		Inventory.changeActionSlot(action, 1)
+		update_visuals()
+	elif event.is_action_pressed(\"inputAction2\"):
+		Inventory.changeActionSlot(action, 2)
+		update_visuals()
+	elif event.is_action_pressed(\"inputAction3\"):
+		Inventory.changeActionSlot(action, 3)
+		update_visuals()
+	elif event.is_action_pressed(\"inputAction4\"):
+		Inventory.changeActionSlot(action, 4)
+		update_visuals()
+"
+
+[node name="ActionSlot" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+script = SubResource("GDScript_23w45")
+
+[node name="ActionIcon" type="Sprite2D" parent="."]

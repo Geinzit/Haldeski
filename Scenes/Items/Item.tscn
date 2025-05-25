@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmtjlep5nb6uk"]
+
+[ext_resource type="Script" path="res://Scripts/Item/Item.gd" id="1_jcdx0"]
+[ext_resource type="Texture2D" uid="uid://c2cv3acvtnwoy" path="res://assets/prototype/Dungeon Crawl Tiles/item/scroll/blank_paper.png" id="2_6qcjm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5822o"]
+
+[node name="Item" type="Node2D"]
+script = ExtResource("1_jcdx0")
+
+[node name="Icon" type="Sprite2D" parent="."]
+texture = ExtResource("2_6qcjm")
+
+[node name="ItemArea" type="Area2D" parent="."]
+scale = Vector2(1.39, 1.39)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemArea"]
+shape = SubResource("RectangleShape2D_5822o")

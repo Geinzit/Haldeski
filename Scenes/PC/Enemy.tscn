@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://q2t57eedmbac"]
+
+[ext_resource type="Script" path="res://Scripts/PC/Enemy.gd" id="1_3thuj"]
+[ext_resource type="Texture2D" uid="uid://d4h73dv2niwqb" path="res://assets/prototype/Dungeon Crawl Stone Soup Supplemental/monster/holy/angel.png" id="2_3ojrx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4heyv"]
+radius = 15.0333
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_3thuj")
+
+[node name="EnemySprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_3ojrx")
+
+[node name="Healthbar" type="ColorRect" parent="EnemySprite"]
+offset_left = -16.0
+offset_top = 16.0
+offset_right = 16.0
+offset_bottom = 17.0
+color = Color(0.564706, 0, 0, 1)
+
+[node name="Mentalbar" type="ColorRect" parent="EnemySprite"]
+offset_left = -16.0
+offset_top = 17.0
+offset_right = 16.0
+offset_bottom = 18.0
+color = Color(0, 0.577795, 5.77569e-07, 1)
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_4heyv")
